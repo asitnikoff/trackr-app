@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.trackr_app.GlobalData.Companion.user
+import com.example.trackr_app.GlobalData.Companion.users
 
 class ChangePasswordActivity : AppCompatActivity() {
     private lateinit var button: Button
@@ -22,8 +24,10 @@ class ChangePasswordActivity : AppCompatActivity() {
                                             ?.toString()
 
             if ((password == passwordConfirm) && (password != null)) {
-                Authorization.user.password = password
-                Toast.makeText(this, "Пароль был обновлен", Toast.LENGTH_SHORT).show()
+                user.password = password
+                users[user.positionInTotal].password = password
+                Toast.makeText(this, "Пароль был обновлен", Toast.LENGTH_SHORT)
+                     .show()
                 this.finish()
             }
         }
