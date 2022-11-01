@@ -8,4 +8,15 @@
     <string name="input_password_text">Введите пароль</string>
     <string name="log_in_text">Войти</string>
     <string name="register_text">Зарегистрироваться</string>
+    <string name="btn_change_password">Изменить пароль</string>
+    <string name="name_title">Имя:</string>
+    <string name="surname_title">Фамилия:</string>
+    <string name="patronymic_title">Отчество:</string>
+    <string name="projects_title">Проекты:</string>
+    <string name="email_title">Почта:</string>
+    <string name="phone_number_title">Номер телефона:</string>
+    <string name="username_title">Никнейм:</string>
+    <string name="confirm_text">Подтвердить</string>
+    <string name="confirm_password_text">Подтвердите пароль:</string>
+    <string name="btn_exit">Выйти</string>
 </resources>
