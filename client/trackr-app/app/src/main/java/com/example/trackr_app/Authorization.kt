@@ -9,7 +9,9 @@ import android.widget.EditText
 import android.widget.TextView
 
 class Authorization : AppCompatActivity() {
-    val user = User()
+    companion object {
+        @JvmStatic val user = User()
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +25,7 @@ class Authorization : AppCompatActivity() {
         }
     }
 
-    fun checkCredentialsData() {
+    private fun checkCredentialsData() {
         val login = findViewById<EditText>(R.id.edt_login).text.toString()
         val password = findViewById<EditText>(R.id.edt_password).text.toString()
 
@@ -34,7 +36,7 @@ class Authorization : AppCompatActivity() {
         }
     }
 
-    fun changeActivities() {
+    private fun changeActivities() {
         val intent = Intent(this, Home::class.java);
         startActivity(intent)
     }
