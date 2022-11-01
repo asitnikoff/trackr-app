@@ -17,11 +17,11 @@ class Registration : AppCompatActivity() {
 
         btnRegistration.setOnClickListener {
             val login: String? = findViewById<EditText>(R.id.edt_login)
-                                .text
-                                ?.toString()
+                                 .text
+                                 ?.toString()
             val password: String? = findViewById<EditText>(R.id.edt_password)
-                                .text
-                                ?.toString()
+                                    .text
+                                    ?.toString()
             val passwordConfirmation: String? = findViewById<EditText>(
                                                     R.id.edt_confirmation_password
                                                 )

@@ -4,10 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
+import com.example.trackr_app.GlobalData.Companion.user
 
 class Profile : AppCompatActivity() {
     private lateinit var btnChangePassword: Button
     private lateinit var btnExit: Button
+    private lateinit var tvUsername: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,5 +28,8 @@ class Profile : AppCompatActivity() {
             intent = Intent(this, Authorization::class.java)
             startActivity(intent)
         }
+
+        tvUsername = findViewById(R.id.tv_username)
+        tvUsername.text = user.login
     }
 }
