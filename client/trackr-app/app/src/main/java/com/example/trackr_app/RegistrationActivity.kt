@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import com.example.trackr_app.GlobalData.Companion.users
 
-class Registration : AppCompatActivity() {
+class RegistrationActivity : AppCompatActivity() {
     private lateinit var btnRegistration: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {

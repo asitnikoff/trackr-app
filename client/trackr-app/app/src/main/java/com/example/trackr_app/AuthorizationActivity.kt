@@ -8,7 +8,7 @@ import android.widget.EditText
 import com.example.trackr_app.GlobalData.Companion.user
 import com.example.trackr_app.GlobalData.Companion.users
 
-class Authorization : AppCompatActivity() {
+class AuthorizationActivity : AppCompatActivity() {
     private lateinit var btnRegistration: Button
     private lateinit var logInButton: Button
 
@@ -24,7 +24,7 @@ class Authorization : AppCompatActivity() {
         }
 
         btnRegistration.setOnClickListener {
-            val intent = Intent(this, Registration::class.java)
+            val intent = Intent(this, RegistrationActivity::class.java)
             startActivity(intent)
         }
     }
@@ -43,7 +43,7 @@ class Authorization : AppCompatActivity() {
     }
 
     private fun changeActivities() {
-        val intent = Intent(this, Home::class.java);
+        val intent = Intent(this, HomeActivity::class.java);
         startActivity(intent)
     }
 

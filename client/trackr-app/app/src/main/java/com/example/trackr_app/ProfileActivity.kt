@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import com.example.trackr_app.GlobalData.Companion.user
 
-class Profile : AppCompatActivity() {
+class ProfileActivity : AppCompatActivity() {
     private lateinit var btnChangePassword: Button
     private lateinit var btnExit: Button
     private lateinit var tvUsername: TextView
@@ -25,7 +25,7 @@ class Profile : AppCompatActivity() {
         }
 
         btnExit.setOnClickListener {
-            intent = Intent(this, Authorization::class.java)
+            intent = Intent(this, AuthorizationActivity::class.java)
             startActivity(intent)
         }
 

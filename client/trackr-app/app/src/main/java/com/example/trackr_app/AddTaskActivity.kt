@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 
-class AddTask : AppCompatActivity() {
+class AddTaskActivity : AppCompatActivity() {
     private lateinit var button: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,8 +16,15 @@ class AddTask : AppCompatActivity() {
 
         button.setOnClickListener {
             val editText = findViewById<EditText>(R.id.edtText)
-            Projects.projectsList.add(0, editText.text.toString())
-            Projects.adapter.notifyDataSetChanged()
+            GlobalData.tasks.add(
+                Task(
+                    editText.text.toString(),
+                    GlobalData.user,
+                    intent.extras?.get("projectName").toString()
+                )
+            )
+            ProjectActivity.tasks.add(GlobalData.tasks.last())
+            ProjectActivity.adapter.notifyDataSetChanged()
             this.finish()
         }
     }

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class Home : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -14,12 +14,12 @@ class Home : AppCompatActivity() {
         val profile: Button = findViewById(R.id.profile)
 
         projects.setOnClickListener {
-            intent = Intent(this, Projects::class.java)
+            intent = Intent(this, ProjectsListActivity::class.java)
             startActivity(intent)
         }
 
         profile.setOnClickListener {
-            intent = Intent(this, Profile::class.java)
+            intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
     }

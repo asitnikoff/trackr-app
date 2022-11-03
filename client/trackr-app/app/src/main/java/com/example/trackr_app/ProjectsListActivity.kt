@@ -1,17 +1,12 @@
 package com.example.trackr_app
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.view.KeyEvent
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ListView
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
-
-class Projects : AppCompatActivity() {
+class ProjectsListActivity : AppCompatActivity() {
     companion object {
         @JvmStatic lateinit var adapter: ArrayAdapter<String>
         @JvmStatic val projectsList = mutableListOf(
@@ -20,23 +15,23 @@ class Projects : AppCompatActivity() {
     }
 
     private lateinit var listView: ListView
-    private lateinit var button: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_projects)
 
-        listView = findViewById(R.id.listView)
+        listView = findViewById(R.id.projectsList)
         adapter = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
             projectsList
         )
         listView.adapter = adapter
-        button = findViewById(R.id.btnAddNewTask)
 
-        button.setOnClickListener {
-            intent = Intent(this, AddTask::class.java)
+        listView.setOnItemClickListener { _, view: View?, _, _ ->
+            val intent = Intent(this, ProjectActivity::class.java)
+            val textView: TextView = view as TextView
+            intent.putExtra("projectName", textView.text)
             startActivity(intent)
         }
     }
