@@ -4,15 +4,15 @@ plugins {
 }
 
 android {
-    namespace 'com.example.trackr_app'
-    compileSdk 32
+    namespace 'main.trackr'
+    compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.trackr_app"
+        applicationId "main.trackr"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName '1.0'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -33,8 +33,10 @@ android {
 }
 
 dependencies {
-
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
+    implementation 'com.squareup.retrofit2:retrofit:' + retrofit_ver
+    implementation 'com.squareup.retrofit2:converter-gson:' + retrofit_ver
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

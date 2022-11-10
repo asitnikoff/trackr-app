@@ -1,0 +1,3 @@
+server/server/__init__.py
+server/server/__pycache__
+server/server/settings.py

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    tools:context=".HomeActivity">
+    tools:context=".views.activities.HomeActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="20dp"
             android:paddingVertical="8dp"
-            android:text="@string/projects_text"
+            android:text="@string/projectsText"
             android:textColor="@color/white"
             style="@style/defaultText"
             app:layout_constraintBottom_toTopOf="@+id/profile"
@@ -36,7 +36,7 @@
             android:layout_marginTop="8dp"
             android:paddingHorizontal="20dp"
             android:paddingVertical="8dp"
-            android:text="@string/profile_text"
+            android:text="@string/profileText"
             android:textColor="@color/white"
             style="@style/defaultText"
             app:layout_constraintTop_toBottomOf="@+id/projects"
