@@ -6,6 +6,7 @@ from .views import (
     ProjectDetailApiView,
     UserListApiView,
     UserDetailApiView,
+    UserFindApiView,
     TagListApiView,
     TagDetailApiView,
     PriorityListApiView,
@@ -17,22 +18,23 @@ from .views import (
 
 urlpatterns = [
     path('roles/', RoleListApiView.as_view()),
-    path('roles/<int:role_id>/', RoleDetailApiView.as_view()),
+    path('roles/<int:pk>/', RoleDetailApiView.as_view()),
 
     path('projects/', ProjectListApiView.as_view()),
-    path('projects/<int:project_id>/', ProjectDetailApiView.as_view()),
+    path('projects/<int:pk>/', ProjectDetailApiView.as_view()),
 
     path('users/', UserListApiView.as_view()),
-    path('users/<int:user_id>/', UserDetailApiView.as_view()),
+    path('users/<int:pk>/', UserDetailApiView.as_view()),
+    path('users/find/', UserFindApiView.as_view()),
 
     path('tags/', TagListApiView.as_view()),
-    path('tags/<int:tag_id>/', TagDetailApiView.as_view()),
+    path('tags/<int:pk>/', TagDetailApiView.as_view()),
 
     path('priorities/', PriorityListApiView.as_view()),
-    path('priorities/<int:priority_id>/', PriorityDetailApiView.as_view()),
+    path('priorities/<int:pk>/', PriorityDetailApiView.as_view()),
 
     path('tasks/', TaskListApiView.as_view()),
-    path('tasks/<int:task_id>/', TaskDetailApiView.as_view()),
+    path('tasks/<int:pk>/', TaskDetailApiView.as_view()),
 
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

@@ -35,7 +35,7 @@ class User(models.Model):
     surname = models.CharField(max_length=45)
     patronymic = models.CharField(max_length=45)
     projects = models.ManyToManyField(Project, blank=True)
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=15, null=True, blank=True)
     telegram_id = models.CharField(max_length=255, null=True, blank=True)
     vk_id = models.CharField(max_length=255, null=True, blank=True)

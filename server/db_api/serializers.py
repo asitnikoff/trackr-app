@@ -46,8 +46,8 @@ class UserSerializer(serializers.ModelSerializer):
             "vk_id",
             "login",
             "password",
-            "roles",
-            "projects",
+            # "roles",
+            # "projects",
             "is_deleted",
         ]
 

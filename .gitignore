@@ -1,3 +1,5 @@
 server/server/__init__.py
 server/server/__pycache__
 server/server/settings.py
+server/db_api/__pycache__
+server/db_api/migrations

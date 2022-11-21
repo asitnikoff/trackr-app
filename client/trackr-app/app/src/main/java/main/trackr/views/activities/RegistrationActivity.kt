@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import main.trackr.controllers.RegistrationController
 //import main.trackr.models.GlobalDataModel.Companion.users
 import main.trackr.models.UserModel
@@ -18,25 +21,14 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
+        controller.bind(this)
 
         btnRegistration = findViewById(R.id.btnRegister)
 
         btnRegistration.setOnClickListener {
-            if (controller.registrationSuccessful(this)) {
-                showSuccessfulRegistrationMessage()
-                this.finish()
-            } else {
-                showIncorrectDataMessage()
-            }
+            println("waiting...")
+            controller.register()
         }
-    }
-
-    fun showSuccessfulRegistrationMessage() {
-        showMessage("Аккаунт успешно зарегистрирован!")
-    }
-
-    fun showIncorrectDataMessage() {
-        showMessage("Упс... Что-то введено неверно или вообще не введено!")
     }
 
     override fun getLogin() = findViewById<EditText>(R.id.edtLogin).text.toString()
@@ -54,8 +46,21 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
 
     override fun getSurname() = findViewById<EditText>(R.id.edtSurname).text.toString()
 
-    private fun showMessage(message: String) {
+    override fun showMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun registrationUnsuccessful() {
+        showMessage("Не все поля заполнены")
+    }
+
+    override fun registrationSuccessful() {
+        showMessage("Пользователь зарегистрирован!")
+        CoroutineScope(Dispatchers.IO).launch {
+            controller.addUserToDatabase()
+            this@RegistrationActivity.finish()
+        }
+
     }
 
     override fun getUser(): UserModel {

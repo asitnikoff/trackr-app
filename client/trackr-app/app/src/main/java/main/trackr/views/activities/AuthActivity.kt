@@ -4,43 +4,29 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import main.trackr.R
 import main.trackr.controllers.AuthController
 import main.trackr.models.TaskModel
+import main.trackr.views.interfaces.AuthView
 
-class AuthActivity : AppCompatActivity() {
+class AuthActivity : AppCompatActivity(), AuthView {
     private val btnRegistration: Button by lazy { findViewById(R.id.btnRegister) }
     private val logInButton: Button by lazy { findViewById(R.id.btnLogIn) }
-    private val controller: AuthController by lazy { AuthController() }
-    private lateinit var data: List<TaskModel>
+    private val controller: AuthController = AuthController()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_authorization)
-
-//        val tasks: TasksApi = api.create(TasksApi::class.java)
-//        api.create(TasksApi::class.java).tasks().enqueue(object: Callback<List<TaskModel>> {
-//            override fun onResponse(
-//                call: Call<List<TaskModel>>,
-//                response: Response<List<TaskModel>>
-//            ) {
-//                println("SUCCESS!!!")
-//                data = response.body()!!
-//                println(data.get(0).task_title)
-//            }
-//
-//            override fun onFailure(call: Call<List<TaskModel>>, t: Throwable) {
-//                println(t.message)
-//            }
-//        })
+        controller.bind(this)
 
         logInButton.setOnClickListener {
-            if (controller.checkCredentialsData(
-                findViewById(R.id.edtLogin),
-                findViewById(R.id.edtPassword)
-            )) {
-                changeActivity(HomeActivity::class.java)
-            }
+            println("waiting...")
+            controller.authorize()
         }
 
         btnRegistration.setOnClickListener {
@@ -52,4 +38,21 @@ class AuthActivity : AppCompatActivity() {
         val intent = Intent(this, newActivity)
         startActivity(intent)
     }
+
+    override fun showMessage(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun successfullyAuthorized() {
+        showMessage("Пользователь успешно авторизован!")
+        changeActivity(HomeActivity::class.java)
+    }
+
+    override fun unsuccessfullyAuthorized() {
+        showMessage("Неверно введены логин и/или пароль")
+    }
+
+    override fun getLogin() = findViewById<EditText>(R.id.edtLogin).text.toString()
+
+    override fun getPassword() = findViewById<EditText>(R.id.edtPassword).text.toString()
 }

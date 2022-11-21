@@ -11,4 +11,7 @@ interface RegistrationView {
     fun getSurname(): String
     fun getPatronymic(): String
     fun getEmail(): String
+    fun showMessage(message: String)
+    fun registrationUnsuccessful()
+    fun registrationSuccessful()
 }
