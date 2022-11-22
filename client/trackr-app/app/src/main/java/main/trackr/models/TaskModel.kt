@@ -1,20 +1,39 @@
 package main.trackr.models
 
+import com.google.gson.annotations.SerializedName
 import java.util.Date
 
 class TaskModel {
-    var taskId: Int = 0
-    lateinit var taskTitle: String
-    lateinit var taskSlug: String
-    lateinit var tags: MutableList<TagModel>
-    lateinit var description: String
-    lateinit var createDate: Date
-    lateinit var endDate: Date
-    lateinit var startDate: Date
-    lateinit var closeDate: Date
-    lateinit var performer: UserModel
-    lateinit var author: UserModel
+    @SerializedName("task_id")
+    var taskId: Int = -1
+
+    @SerializedName("task_title")
+    var taskTitle: String = ""
+
+    @SerializedName("task_slug")
+    var taskSlug: String = ""
+
+    var tags: MutableList<TagModel> = mutableListOf()
+    var description: String = ""
+
+    @SerializedName("create_date")
+    var createDate: Date = Date()
+
+    @SerializedName("end_date")
+    var endDate: Date = Date()
+
+    @SerializedName("start_date")
+    var startDate: Date = Date()
+
+    @SerializedName("close_date")
+    var closeDate: Date = Date()
+
+    var performer: UserModel = UserModel("", "")
+    var author: UserModel = UserModel("", "")
     lateinit var priority: PriorityModel
-    var is_open: Boolean = true
+
+    @SerializedName("is_open")
+    var isOpen: Boolean = true
+
     lateinit var project: ProjectModel
 }

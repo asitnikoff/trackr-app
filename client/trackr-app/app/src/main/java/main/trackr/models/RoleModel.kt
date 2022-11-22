@@ -1,6 +1,10 @@
 package main.trackr.models
 
+import com.google.gson.annotations.SerializedName
+
 class RoleModel {
-    var roleId: Int = 0
-    lateinit var title: String
+    @SerializedName("role_id")
+    val roleId: Int = -1
+
+    var title: String = ""
 }

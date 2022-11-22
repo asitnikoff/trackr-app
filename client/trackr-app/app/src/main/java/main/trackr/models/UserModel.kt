@@ -1,6 +1,7 @@
 package main.trackr.models
 
 import android.widget.Toast
+import com.google.gson.annotations.SerializedName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,22 +17,32 @@ import retrofit2.Response
 
 
 class UserModel(var login: String, var password: String) {
-    var user_id: Int = 0
+    @SerializedName("user_id")
+    var userId: Int = 0
+
     var name: String = ""
     var surname: String = ""
     var patronymic: String = ""
-    //    var projects: MutableList<ProjectModel> = mutableListOf()
     var email: String = ""
-    var phone_number: String = ""
-    var telegram_id: String = ""
-    var vk_id: String = ""
-    //    var roles: MutableList<RoleModel> = mutableListOf()
-    var is_deleted: Boolean = false
+
+    @SerializedName("phone_number")
+    var phoneNumber: String = ""
+
+    @SerializedName("telegram_id")
+    var telegramId: String = ""
+
+    @SerializedName("vk_id")
+    var vkId: String = ""
+
+    var projects: MutableList<ProjectModel> = mutableListOf()
+    var roles: MutableList<RoleModel> = mutableListOf()
+
+    @SerializedName("is_deleted")
+    var isDeleted: Boolean = false
 
     private val req: UserRequest = UserRequest()
 
-
-    suspend fun addUser() {
+    fun addUser() {
         req.addUser(this)
     }
 }

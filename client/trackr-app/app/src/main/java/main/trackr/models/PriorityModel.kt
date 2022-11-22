@@ -1,6 +1,10 @@
 package main.trackr.models
 
+import com.google.gson.annotations.SerializedName
+
 class PriorityModel {
-    var priorityId: Int = 0
-    lateinit var title: String
+    @SerializedName("priority_id")
+    var priorityId: Int = -1
+
+    var title: String = ""
 }

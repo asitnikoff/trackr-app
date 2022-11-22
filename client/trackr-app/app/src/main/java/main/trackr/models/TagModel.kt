@@ -1,6 +1,10 @@
 package main.trackr.models
 
+import com.google.gson.annotations.SerializedName
+
 class TagModel {
-    var tagId: Int = 0
-    lateinit var title: String
+    @SerializedName("tag_id")
+    var tagId: Int = -1
+
+    var title: String = ""
 }

@@ -30,8 +30,8 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    # projects = ProjectSerializer(many=True)
-    # roles = RoleSerializer(many=True)
+    projects = ProjectSerializer(many=True)
+    roles = RoleSerializer(many=True)
 
     class Meta:
         model = User
@@ -46,8 +46,8 @@ class UserSerializer(serializers.ModelSerializer):
             "vk_id",
             "login",
             "password",
-            # "roles",
-            # "projects",
+            "roles",
+            "projects",
             "is_deleted",
         ]
 

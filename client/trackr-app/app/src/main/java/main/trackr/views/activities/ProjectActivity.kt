@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ListView
-import main.trackr.models.GlobalDataModel
 import main.trackr.models.TaskModel
 import main.trackr.adapters.TasksAdapter
 

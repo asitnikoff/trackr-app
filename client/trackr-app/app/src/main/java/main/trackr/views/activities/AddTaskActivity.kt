@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import main.trackr.R
-import main.trackr.models.GlobalDataModel
 import main.trackr.models.TaskModel
 import main.trackr.models.UserModel
 
