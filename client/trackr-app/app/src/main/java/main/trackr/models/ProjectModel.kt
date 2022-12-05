@@ -1,6 +1,7 @@
 package main.trackr.models
 
 import com.google.gson.annotations.SerializedName
+import main.trackr.models.requests.ProjectRequest
 
 class ProjectModel {
     @SerializedName("project_id")
@@ -12,5 +13,6 @@ class ProjectModel {
     @SerializedName("project_name")
     var projectName: String = ""
 
+    @SerializedName("description")
     var description: String = ""
 }

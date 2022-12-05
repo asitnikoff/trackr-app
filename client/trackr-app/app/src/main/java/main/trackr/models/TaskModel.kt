@@ -13,7 +13,10 @@ class TaskModel {
     @SerializedName("task_slug")
     var taskSlug: String = ""
 
+    @SerializedName("tags")
     var tags: MutableList<TagModel> = mutableListOf()
+
+    @SerializedName("description")
     var description: String = ""
 
     @SerializedName("create_date")
@@ -28,12 +31,18 @@ class TaskModel {
     @SerializedName("close_date")
     var closeDate: Date = Date()
 
+    @SerializedName("performer")
     var performer: UserModel = UserModel("", "")
+
+    @SerializedName("author")
     var author: UserModel = UserModel("", "")
-    lateinit var priority: PriorityModel
+
+    @SerializedName("priority")
+    var priority: PriorityModel = PriorityModel()
 
     @SerializedName("is_open")
     var isOpen: Boolean = true
 
-    lateinit var project: ProjectModel
+    @SerializedName("project")
+    var project: ProjectModel = ProjectModel()
 }

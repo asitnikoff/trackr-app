@@ -20,9 +20,16 @@ class UserModel(var login: String, var password: String) {
     @SerializedName("user_id")
     var userId: Int = 0
 
+    @SerializedName("name")
     var name: String = ""
+
+    @SerializedName("surname")
     var surname: String = ""
+
+    @SerializedName("patronymic")
     var patronymic: String = ""
+
+    @SerializedName("email")
     var email: String = ""
 
     @SerializedName("phone_number")
@@ -34,12 +41,16 @@ class UserModel(var login: String, var password: String) {
     @SerializedName("vk_id")
     var vkId: String = ""
 
+    @SerializedName("projects")
     var projects: MutableList<ProjectModel> = mutableListOf()
+
+    @SerializedName("roles")
     var roles: MutableList<RoleModel> = mutableListOf()
 
     @SerializedName("is_deleted")
     var isDeleted: Boolean = false
 
+    @Transient
     private val req: UserRequest = UserRequest()
 
     fun addUser() {

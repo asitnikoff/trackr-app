@@ -18,9 +18,9 @@ class Role(models.Model):
 
 class Project(models.Model):
     project_id = models.AutoField(primary_key=True, unique=True)
-    project_slug = models.CharField(max_length=10)
-    project_name = models.CharField(max_length=90)
-    description = models.TextField(default="")
+    project_slug = models.CharField(max_length=10, default="empty")
+    project_name = models.CharField(max_length=90, default="empty")
+    description = models.TextField(default="empty")
 
     def __str__(self):
         return self.project_name
@@ -76,29 +76,31 @@ class Priority(models.Model):
 class Task(models.Model):
     task_id = models.AutoField(primary_key=True)
     task_title = models.CharField(max_length=90)
-    task_slug = models.CharField(max_length=20, unique=True)
-    tags = models.ManyToManyField(Tag)
+    task_slug = models.CharField(max_length=20, unique=True, default="")
+    # tags = models.ManyToManyField(Tag)
     description = models.TextField(default="")
-    create_date = models.DateTimeField(default=now)
-    end_date = models.DateTimeField(default=now)
-    start_date = models.DateTimeField(default=now, null=True, blank=True)
-    close_date = models.DateTimeField(default=now, null=True, blank=True)
-    performer = models.ForeignKey(
-                            User,
-                            null=True,
-                            blank=True,
-                            on_delete=models.SET_NULL,
-                            related_name='performer'
-                        )
+    # create_date = models.DateTimeField(default=now)
+    # end_date = models.DateTimeField(default=now)
+    # start_date = models.DateTimeField(default=now, null=True, blank=True)
+    # close_date = models.DateTimeField(default=now, null=True, blank=True)
+    # performer = models.ForeignKey(
+                            # User,
+                            # null=True,
+                            # blank=True,
+                            # on_delete=models.SET_NULL,
+                            # related_name='performer'
+                        # )
     author = models.ForeignKey(
                             User,
                             on_delete=models.DO_NOTHING,
                             related_name='author',
+                            null=True,
+                            blank=True
                         )
-    priority = models.ForeignKey(
-                            Priority,
-                            on_delete=models.DO_NOTHING,
-                        )
+    # priority = models.ForeignKey(
+                            # Priority,
+                            # on_delete=models.DO_NOTHING,
+                        # )
     is_open = models.BooleanField(default=True)
     project = models.ForeignKey(
                             Project,

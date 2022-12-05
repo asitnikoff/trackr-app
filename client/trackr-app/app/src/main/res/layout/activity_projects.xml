@@ -6,11 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".views.activities.ProjectsListActivity">
 
+    <Button
+        android:id="@+id/btnAddNewProject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Добавить новый проект"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/projectsList"/>
+
     <ListView
         android:id="@+id/projectsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddNewProject"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp"
         tools:ignore="MissingConstraints"/>

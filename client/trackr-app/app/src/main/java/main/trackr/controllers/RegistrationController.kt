@@ -27,15 +27,18 @@ class RegistrationController() {
         return retUser
     }
 
-    suspend fun addUserToDatabase() {
+    fun addUserToDatabase() {
         user.addUser()
     }
 
     fun register() {
+        user = view.getUser()
+        if (!checkRegistrationData()) {
+            return
+        }
+
         CoroutineScope(Dispatchers.IO).launch {
             val dbUser: UserModel? = getUserFromDatabase()
-            user = view.getUser()
-            checkRegistrationData()
             withContext(Dispatchers.Main) {
                 if (dbUser == null) {
                     view.registrationSuccessful()

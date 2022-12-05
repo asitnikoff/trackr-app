@@ -4,96 +4,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
     android:layout_marginLeft="8dp"
-    tools:context=".views.activities.AddTaskActivity">
+    android:layout_marginTop="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/taskNameLayout"
+        android:id="@+id/projectNameLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/taskSlugLayout">
+        app:layout_constraintBottom_toTopOf="@+id/projectSlugLayout">
 
         <TextView
-            android:id="@+id/taskNameTitle"
+            android:id="@+id/projectNameTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/defaultText"
-            android:text="Введите название задачи:"
+            android:text="Введите название проекта:"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/edtTaskName"/>
+            app:layout_constraintBottom_toTopOf="@+id/edtProjectName"/>
 
         <EditText
             android:layout_marginTop="8dp"
-            android:id="@+id/edtTaskName"
+            android:id="@+id/edtProjectName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            app:layout_constraintTop_toBottomOf="@+id/taskNameTitle"
+            app:layout_constraintTop_toBottomOf="@+id/projectNameTitle"
             app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_marginTop="16dp"
-        android:id="@+id/taskSlugLayout"
+        android:id="@+id/projectSlugLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/taskNameLayout"
-        app:layout_constraintBottom_toTopOf="@+id/taskDescriptionLayout">
+        app:layout_constraintTop_toBottomOf="@+id/projectNameLayout"
+        app:layout_constraintBottom_toTopOf="@+id/projectDescriptionLayout">
 
         <TextView
-            android:id="@+id/taskSlugTitle"
+            android:id="@+id/projectSlugTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Введите короткое название проекта:"
             style="@style/defaultText"
-            android:text="Введите короткое название задачи:"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/edtTaskSlug"/>
+            app:layout_constraintBottom_toTopOf="@+id/edtProjectSlug"/>
 
         <EditText
             android:layout_marginTop="8dp"
-            android:id="@+id/edtTaskSlug"
+            android:id="@+id/edtProjectSlug"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            app:layout_constraintTop_toBottomOf="@+id/taskSlugTitle"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:inputType="textPersonName"
+            app:layout_constraintTop_toBottomOf="@+id/projectSlugTitle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_marginTop="16dp"
-        android:id="@+id/taskDescriptionLayout"
+        android:id="@+id/projectDescriptionLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/taskSlugLayout"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddTask">
+        app:layout_constraintTop_toBottomOf="@+id/projectSlugLayout"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddProject">
 
         <TextView
-            android:id="@+id/taskDescriptionTitle"
+            android:id="@+id/projectDescriptionTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/defaultText"
-            android:text="Введите описание задачи:"
+            android:text="Введите описание проекта:"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/edtTaskDescription"/>
+            app:layout_constraintBottom_toTopOf="@+id/edtProjectDescription"/>
 
         <EditText
             android:layout_marginTop="8dp"
-            android:id="@+id/edtTaskDescription"
+            android:id="@+id/edtProjectDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            app:layout_constraintTop_toBottomOf="@+id/taskDescriptionTitle"
+            app:layout_constraintTop_toBottomOf="@+id/projectDescriptionTitle"
             app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/btnAddTask"
+        android:layout_marginTop="16dp"
+        android:id="@+id/btnAddProject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="Добавить"
-        app:layout_constraintTop_toBottomOf="@id/taskDescriptionLayout"/>
+        app:layout_constraintTop_toBottomOf="@id/projectDescriptionLayout"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

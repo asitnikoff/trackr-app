@@ -1,3 +1,7 @@
+from drf_writable_nested import (
+    WritableNestedModelSerializer,
+    UniqueFieldsMixin
+)
 from rest_framework import serializers
 from .models import (
     Role,
@@ -9,7 +13,7 @@ from .models import (
 )
 
 
-class RoleSerializer(serializers.ModelSerializer):
+class RoleSerializer(UniqueFieldsMixin, WritableNestedModelSerializer, serializers.ModelSerializer):
     class Meta:
         model = Role
         fields = [
@@ -18,7 +22,7 @@ class RoleSerializer(serializers.ModelSerializer):
         ]
 
 
-class ProjectSerializer(serializers.ModelSerializer):
+class ProjectSerializer(UniqueFieldsMixin, WritableNestedModelSerializer, serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = [
@@ -29,7 +33,7 @@ class ProjectSerializer(serializers.ModelSerializer):
         ]
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(UniqueFieldsMixin, WritableNestedModelSerializer, serializers.ModelSerializer):
     projects = ProjectSerializer(many=True)
     roles = RoleSerializer(many=True)
 
@@ -52,7 +56,7 @@ class UserSerializer(serializers.ModelSerializer):
         ]
 
 
-class TagSerializer(serializers.ModelSerializer):
+class TagSerializer(UniqueFieldsMixin, WritableNestedModelSerializer, serializers.ModelSerializer):
     class Meta:
         model = Tag
         fields = [
@@ -61,7 +65,7 @@ class TagSerializer(serializers.ModelSerializer):
         ]
 
 
-class PrioritySerializer(serializers.ModelSerializer):
+class PrioritySerializer(UniqueFieldsMixin, WritableNestedModelSerializer, serializers.ModelSerializer):
     class Meta:
         model = Priority
         fields = [
@@ -69,11 +73,11 @@ class PrioritySerializer(serializers.ModelSerializer):
             "title"
         ]
 
-class TaskSerializer(serializers.ModelSerializer):
-    tags = TagSerializer(many=True)
-    performer = UserSerializer(many=False)
+class TaskSerializer(UniqueFieldsMixin, WritableNestedModelSerializer, serializers.ModelSerializer):
+    # tags = TagSerializer(many=True)
+    # performer = UserSerializer(many=False)
     author = UserSerializer(many=False)
-    priority = PrioritySerializer(many=False)
+    # priority = PrioritySerializer(many=False)
     project = ProjectSerializer(many=False)
 
     class Meta:
@@ -82,14 +86,15 @@ class TaskSerializer(serializers.ModelSerializer):
             "task_id",
             "task_title",
             "task_slug",
-            "tags",
+            # "tags",
             "description",
-            "create_date",
-            "end_date",
-            "close_date",
-            "performer",
+            # "create_date",
+            # "end_date",
+            # "open_date",
+            # "close_date",
+            # "performer",
             "author",
-            "priority",
+            # "priority",
             "is_open",
             "project"
         ]

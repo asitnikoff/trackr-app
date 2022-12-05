@@ -1,5 +1,6 @@
 package main.trackr.views.activities
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,7 @@ import kotlinx.coroutines.launch
 import main.trackr.R
 import main.trackr.controllers.AuthController
 import main.trackr.models.TaskModel
+import main.trackr.models.UserModel
 import main.trackr.views.interfaces.AuthView
 
 class AuthActivity : AppCompatActivity(), AuthView {
@@ -43,8 +45,12 @@ class AuthActivity : AppCompatActivity(), AuthView {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun successfullyAuthorized() {
+    override fun successfullyAuthorized(user: UserModel) {
         showMessage("Пользователь успешно авторизован!")
+        controller.saveUserToPreferences(
+            this.getSharedPreferences("global", Context.MODE_PRIVATE),
+            user
+        )
         changeActivity(HomeActivity::class.java)
     }
 

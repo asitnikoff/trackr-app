@@ -6,5 +6,6 @@ class RoleModel {
     @SerializedName("role_id")
     val roleId: Int = -1
 
+    @SerializedName("title")
     var title: String = ""
 }

@@ -16,4 +16,7 @@ interface UsersApi {
 
     @GET("users/find/")
     fun getUser(@Query("login") login: String): Call<UserModel>
+
+    @PATCH("users/{user_id}/")
+    fun updateUser(@Path("user_id") user_id: Int, @Body user: UserModel): Call<UserModel>
 }

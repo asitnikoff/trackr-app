@@ -39,8 +39,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/surnameLayout"
         app:layout_constraintTop_toBottomOf="@+id/usernameLayout"
+        app:layout_constraintBottom_toTopOf="@+id/surnameLayout"
         app:layout_constraintVertical_chainStyle="packed">
 
         <TextView
@@ -123,7 +123,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@+id/patronymicLayout"
-        app:layout_constraintBottom_toTopOf="@+id/phoneNumberLayout">
+        app:layout_constraintBottom_toTopOf="@+id/passwordLayout">
 
         <TextView
             android:id="@+id/tvEmailTitle"
@@ -145,7 +145,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/phoneNumberLayout"
+        android:id="@+id/passwordLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -153,21 +153,21 @@
         app:layout_constraintBottom_toTopOf="@+id/btnChangePassword">
 
         <TextView
-            android:id="@+id/tvPhoneNumberTitle"
+            android:id="@+id/tvPasswordTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/phoneNumberTitle"
+            android:text="@string/passwordTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tvPhoneNumber"
+            app:layout_constraintEnd_toStartOf="@+id/tvPassword"
             style="@style/defaultText" />
 
         <TextView
-            android:id="@+id/tvPhoneNumber"
+            android:id="@+id/tvPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="+123456789012"
-            app:layout_constraintStart_toEndOf="@+id/tvPhoneNumberTitle"
+            android:text="qwerty"
+            app:layout_constraintStart_toEndOf="@+id/tvPasswordTitle"
             style="@style/defaultText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -176,7 +176,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumberLayout"
+        app:layout_constraintTop_toBottomOf="@+id/passwordLayout"
         app:layout_constraintBottom_toBottomOf="@+id/btnExit"
         android:text="@string/btnChangePassword" />
 

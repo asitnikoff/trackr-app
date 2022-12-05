@@ -29,7 +29,7 @@ class RoleListApiView(generics.ListCreateAPIView):
     serializer_class = RoleSerializer
 
 
-class RoleDetailApiView(generics.RetrieveAPIView):
+class RoleDetailApiView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Role.objects.all()
     serializer_class = RoleSerializer
 
@@ -39,7 +39,7 @@ class ProjectListApiView(generics.ListCreateAPIView):
     serializer_class = ProjectSerializer
 
 
-class ProjectDetailApiView(generics.RetrieveAPIView):
+class ProjectDetailApiView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
 
@@ -49,7 +49,7 @@ class UserListApiView(generics.ListCreateAPIView):
     serializer_class = UserSerializer
 
 
-class UserDetailApiView(generics.RetrieveAPIView):
+class UserDetailApiView(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
@@ -72,7 +72,7 @@ class TagListApiView(generics.ListCreateAPIView):
     serializer_class = TagSerializer
 
 
-class TagDetailApiView(generics.RetrieveAPIView):
+class TagDetailApiView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 
@@ -82,7 +82,7 @@ class PriorityListApiView(generics.ListCreateAPIView):
     serializer_class = PrioritySerializer
 
 
-class PriorityDetailApiView(generics.RetrieveAPIView):
+class PriorityDetailApiView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Priority.objects.all()
     serializer_class = PrioritySerializer
 
@@ -91,7 +91,15 @@ class TaskListApiView(generics.ListCreateAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
+    def get_queryset(self):
+        queryset = Task.objects
+        project_id = self.request.query_params.get('project')
+        if (project_id is None):
+            return queryset.all()
+        queryset = queryset.filter(project__project_id=int(project_id))
+        return queryset
 
-class TaskDetailApiView(generics.RetrieveAPIView):
+
+class TaskDetailApiView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer

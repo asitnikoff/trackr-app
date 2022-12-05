@@ -24,4 +24,5 @@
     <string name="inputSurnameText">Введите фамилию</string>
     <string name="inputPatronymicText">Введите отчество</string>
     <string name="inputEmailText">Введите почту</string>
+    <string name="passwordTitle">Пароль:</string>
 </resources>
